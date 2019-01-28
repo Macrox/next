@@ -7,6 +7,16 @@ import { typeOf } from './object';
  * @return {String}     例：WebkitTransition
  */
 export function camelcase (str) {
+    const strType = typeOf(str);
+    if (strType !== 'String') {
+        warning(
+            '[ camelcase(str: string): string ] ' +
+            `Expected arguments[0] to be a string but get a ${strType}.` +
+            'It will return an empty string without any processing.'
+        );
+        return '';
+    }
+
     if (!/-/.test(str)) {
         return str || '';
     }

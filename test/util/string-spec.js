@@ -9,6 +9,14 @@ describe('src/string.js', function() {
     assert(string.camelcase('animation-duration') === 'animationDuration');
   });
 
+  it('string.camelcase(str) should return empty string if arg[0] is not a string', function () {
+    assert(string.camelcase() === '');
+    assert(string.camelcase(null) === '');
+    assert(string.camelcase([]) === '');
+    assert(string.camelcase({}) === '');
+    assert(string.camelcase(function() {}) === '');
+  })
+
   it('string.hyphenate(str) should return correct string', function () {
     assert(string.hyphenate('') === '');
     assert(string.hyphenate('WebkitTransition') === '-webkit-transition');
